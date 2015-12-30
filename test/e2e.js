@@ -1,27 +1,34 @@
+import path from 'path';
+import chromedriver from 'chromedriver';
 import webdriver from 'selenium-webdriver';
 import { expect } from 'chai';
 import electronPath from 'electron-prebuilt';
 import homeStyles from '../app/components/Home.module.css';
 import counterStyles from '../app/components/Counter.module.css';
 
+chromedriver.start(); // on port 9515
+process.on('exit', chromedriver.stop);
+
+const delay = time => new Promise(resolve => setTimeout(resolve, time));
+
 describe('main window', function spec() {
-  before((done) => {
-    this.timeout(5000);
+  this.timeout(5000);
+
+  before(async () => {
+    await delay(1000); // wait chromedriver start time
     this.driver = new webdriver.Builder()
       .usingServer('http://localhost:9515')
       .withCapabilities({
         chromeOptions: {
           binary: electronPath,
-          args: [ 'app=.' ]
+          args: ['app=' + path.resolve()]
         }
       })
       .forBrowser('electron')
       .build();
-    done();
   });
 
   after(async () => {
-    this.timeout(10000);
     await this.driver.quit();
   });
 
@@ -89,7 +96,7 @@ describe('main window', function spec() {
     expect(await counter.getText()).to.equal('2');
 
     await this.driver.wait(() =>
-      counter.getText().then(text => text === '3' )
+      counter.getText().then(text => text === '3')
     , 1000, 'count not as expected');
   });
 

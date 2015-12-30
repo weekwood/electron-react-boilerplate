@@ -28,11 +28,11 @@ $ npm install
 Run this two commands __simultaneously__ in different console tabs.
 
 ```bash
-npm run hot-server
-npm run start-hot
+$ npm run hot-server
+$ npm run start-hot
 ```
 
-> Note: require node >= 4 and npm >= 2.
+*Note: requires a node version >= 4 and an npm version >= 2.*
 
 #### Toggle Chrome DevTools
 
@@ -40,13 +40,13 @@ npm run start-hot
 - Linux: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>
 - Windows: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>
 
-- see [electron-debug](https://github.com/sindresorhus/electron-debug) for more detail information.
+*See [electron-debug](https://github.com/sindresorhus/electron-debug) for more information.*
 
 #### Toggle Redux DevTools
 
-<kbd>Ctrl+H</kbd>
+- All platforms: <kbd>Ctrl+H</kbd>
 
-- see [redux-devtools-dock-monitor](https://github.com/gaearon/redux-devtools-dock-monitor) for more detail information.
+*See [redux-devtools-dock-monitor](https://github.com/gaearon/redux-devtools-dock-monitor) for more information.*
 
 
 ## Externals
@@ -70,7 +70,13 @@ Import css file as [css-modules](https://github.com/css-modules/css-modules) usi
 ## Package
 
 ```bash
-npm run package
+$ npm run package
+```
+
+To package apps for all platforms:
+
+```bash
+$ npm run package-all
 ```
 
 #### Options
